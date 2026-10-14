@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" style="color-scheme: dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#080b14" />
+  <meta name="description" content="Turn raw meeting notes into a summary and action-item PDF using a local AI model." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236366f1'/%3E%3Cpath d='M16 6l2.2 6.3L24.5 14l-6.3 2.2L16 22.5l-2.2-6.3L7.5 14l6.3-2.2z' fill='%23fff'/%3E%3C/svg%3E" />
+  <title>Meeting Notes → PDF</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l1.7 4.9 4.9 1.7-4.9 1.7L12 15.7l-1.7-4.9-4.9-1.7 4.9-1.7z"/><path d="M18.4 13.6l.9 2.5 2.5.9-2.5.9-.9 2.5-.9-2.5-2.5-.9 2.5-.9z"/></svg>
+      </span>
+      <div>
+        <h1 translate="no">Meeting Notes <span class="arrow">→</span> PDF</h1>
+        <p>Local AI · runs entirely on your machine</p>
+      </div>
+    </div>
+    <div id="status" class="status" role="status" aria-live="polite" data-state="">
+      <span class="dot" aria-hidden="true"></span>
+      <span id="statusText">Checking…</span>
+    </div>
+  </header>
+
+  <main id="main" class="grid">
+    <section class="panel" aria-labelledby="input-h">
+      <div class="panel-head">
+        <span class="step" aria-hidden="true">1</span>
+        <h2 id="input-h">Input</h2>
+      </div>
+
+      <label class="field">
+        <span class="field-label">Meeting title</span>
+        <input id="title" name="meeting-title" type="text" autocomplete="off" spellcheck="false"
+          placeholder="e.g. Q4 Product Planning…" />
+      </label>
+
+      <label class="field">
+        <span class="field-label">Model</span>
+        <select id="model" name="model"></select>
+      </label>
+
+      <button type="button" id="dropzone" class="dropzone" aria-describedby="drop-hint">
+        <svg class="dz-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 15V3" /><path d="m7 8 5-5 5 5" /><path d="M20 17v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2" />
+        </svg>
+        <span class="dz-title">Drop a file or click to browse</span>
+        <span id="drop-hint" class="dz-hint">.txt · .md · .docx · .vtt · .srt · audio (.wav)</span>
+      </button>
+      <input id="file" name="file" type="file" hidden tabindex="-1" aria-hidden="true"
+        accept=".txt,.md,.markdown,.docx,.vtt,.srt,.wav,.mp3,.m4a,.flac,.ogg,.webm,.aac" />
+      <p id="dropError" class="field-error hidden" role="alert"></p>
+
+      <label class="field">
+        <span class="field-label">
+          <span>Notes / transcript</span>
+          <span id="charHint" class="char-count"></span>
+        </span>
+        <textarea id="notes" name="notes" autocomplete="off"
+          placeholder="Paste your meeting notes or transcript…"></textarea>
+      </label>
+
+      <div class="actions">
+        <button id="generate" class="btn-primary" type="button" disabled>Generate PDF</button>
+        <button id="clear" class="btn-ghost" type="button">Clear</button>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="result-h">
+      <div class="panel-head">
+        <span class="step" aria-hidden="true">2</span>
+        <h2 id="result-h">Result</h2>
+      </div>
+      <div id="result" class="result" aria-live="polite">
+        <div class="empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" />
+          </svg>
+          <p>Your summary and action items will appear here.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="overlayText">
+    <div class="overlay-card">
+      <div class="spinner" aria-hidden="true"></div>
+      <p id="overlayText">Working…</p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="alert" aria-live="assertive"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

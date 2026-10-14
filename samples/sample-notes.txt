@@ -1,0 +1,30 @@
+Weekly Product Sync - 14 Oct 2026
+Attendees: Maya, Tom, Priya, Daniel
+
+Maya opened by reviewing last week's launch. Signups are up 18% week over week, but activation
+(the share of new users who complete onboarding) is stuck at 42%. The team agreed this is the
+most important thing to fix this quarter.
+
+Tom said the new onboarding checklist is drafted but needs design review before engineering
+starts. He'll send the Figma link to the group by Thursday (16 Oct).
+
+Priya flagged that the analytics events for onboarding are incomplete - we can't tell where
+users drop off. She will define the missing events and get them into the tracking plan by Monday
+(19 Oct). This is high priority because it blocks reporting.
+
+Daniel raised the support ticket volume: 33 tickets last week about the same payment error.
+He will write up a short root-cause summary and share it with Priya and Tom. Target: end of week.
+
+The team discussed pricing for the upcoming annual plan. No decision was made - Maya will put
+together three pricing options and bring them to the next sync. Daniel wants to loop in Finance
+first.
+
+Marketing wants a case study from the beta customers. Priya volunteered to reach out to three
+customers and ask if they'd be willing to participate. Due next Friday (23 Oct).
+
+Other items:
+- Tom to check whether the mobile crash fix made it into the 2.4.1 release. Medium priority.
+- Maya reminded everyone to submit expense reports before the end of the month.
+- The offsite is tentatively planned for early December; location TBD.
+
+Meeting ended at 10:58am.

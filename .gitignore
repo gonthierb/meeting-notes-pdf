@@ -1,0 +1,9 @@
+node_modules/
+output/
+generated_documents/
+uploads/
+.cache/
+.env
+*.log
+.DS_Store
+Thumbs.db

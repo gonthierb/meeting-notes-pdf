@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    color: #1e293b;
+    font-size: 11pt;
+    line-height: 1.5;
+    margin: 0;
+  }
+  h1, h2 { color: #0f172a; }
+  header {
+    border-bottom: 3px solid #4f46e5;
+    padding-bottom: 14px;
+    margin-bottom: 24px;
+  }
+  header h1 { font-size: 22pt; margin: 0 0 6px; }
+  header .meta { color: #64748b; font-size: 9.5pt; }
+  header .meta span { margin-right: 16px; }
+  section { margin-bottom: 26px; }
+  h2 {
+    font-size: 13pt;
+    margin: 0 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h2 .count {
+    font-size: 9pt;
+    font-weight: 600;
+    background: #eef2ff;
+    color: #4f46e5;
+    border-radius: 999px;
+    padding: 1px 9px;
+  }
+  .summary p { margin: 0 0 10px; text-align: justify; }
+  .summary ul { margin: 0 0 10px; padding-left: 20px; }
+  .summary li { margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+  th {
+    text-align: left;
+    background: #f1f5f9;
+    color: #334155;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 8px 10px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #eef1f5;
+    vertical-align: top;
+  }
+  tr { break-inside: avoid; }
+  td.empty { color: #94a3b8; font-style: italic; }
+  .muted { color: #cbd5e1; }
+  .badge {
+    display: inline-block;
+    font-size: 8.5pt;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 2px 8px;
+  }
+  .priority-high { background: #fee2e2; color: #b91c1c; }
+  .priority-medium { background: #fef3c7; color: #b45309; }
+  .priority-low { background: #dcfce7; color: #15803d; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>{{TITLE}}</h1>
+    <div class="meta">
+      <span>Generated: {{DATE}}</span>
+      <span>Action items: {{ACTION_COUNT}}</span>
+    </div>
+  </header>
+
+  <section class="summary">
+    <h2>Summary</h2>
+    {{SUMMARY}}
+  </section>
+
+  <section class="actions">
+    <h2>Action Items <span class="count">{{ACTION_COUNT}}</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:44%">Task</th>
+          <th style="width:20%">Owner</th>
+          <th style="width:18%">Due</th>
+          <th style="width:18%">Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ACTION_ROWS}}
+      </tbody>
+    </table>
+  </section>
+</body>
+</html>
